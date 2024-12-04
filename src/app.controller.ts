@@ -2,6 +2,7 @@ import { Body, Controller, Get, Logger, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ClientProxy, ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { Cliente } from './interface/cliente';
+import { Seguro } from './interface/seguro';
 
 @Controller()
 export class AppController {
@@ -26,5 +27,10 @@ export class AppController {
   @Post()
   postCliente(@Body() dto: Cliente) {
     return this.clienteAdminBackend.emit('criar-cliente', dto) ;
+  }
+
+  @Post()
+  postSeguro(@Body() dto: Seguro) {
+    return this.clienteAdminBackend.emit('criar-seguro', dto) ;
   }
 }
